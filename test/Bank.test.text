@@ -1,0 +1,6 @@
+const mongoose = require("mongoose");const BankSchema = new mongoose.Schema({name: { type: String,}, location: { type: String,},customers: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Customer'
+            }
+        ],});const Bank = mongoose.model("Bank", BankSchema);module.exports = Bank;

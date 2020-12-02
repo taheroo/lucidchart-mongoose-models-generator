@@ -1,0 +1,12 @@
+Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Text Area 1,Text Area 2,Text Area 3
+1,Page,,,,,,,,,Page 1,,
+2,Class,UML,1,,,,,,,Customer," name:string 
+ address:string
+ phoneNo:int",
+3,Class,UML,1,,,,,,,Account, type:string,
+4,Class,UML,1,,,,,,,Bank," name:string
+ location:string",
+5,Class,UML,1,,,,,,,Loan, type:string,
+6,Line,,1,,,2,4,None,None,0..*,1,
+7,Line,,1,,,2,3,None,None,1,0..*,
+8,Line,,1,,,5,2,None,None,0..*,1,
