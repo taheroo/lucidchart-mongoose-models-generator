@@ -1,20 +1,20 @@
-const fs = require("fs");
-const csv = require("csv-parser");
+const fs = require('fs');
+const csv = require('csv-parser');
 
 async function convertCsvToJson(filePath) {
   return new Promise((resolve, reject) => {
     const results = [];
 
     if (!fs.existsSync(filePath)) {
-      reject("File does not exist!");
+      reject('File does not exist!');
     }
     fs.createReadStream(filePath)
       .pipe(csv())
-      .on("data", (data) => results.push(data))
-      .on("end", () => {
+      .on('data', (data) => results.push(data))
+      .on('end', () => {
         resolve(results);
       })
-      .on("error", (err) => {
+      .on('error', (err) => {
         reject(err);
       });
   });
@@ -23,13 +23,13 @@ async function convertCsvToJson(filePath) {
 function parseClassesFromCsvFileData(csvData) {
   var result = new Map();
   for (let elem of csvData) {
-    if (elem["Name"] == "Class") {
+    if (elem['Name'] == 'Class') {
       var tmp = {
-        Id: elem["Id"],
-        "Text Area 1": elem["Text Area 1"],
-        "Text Area 2": extractFields(elem["Text Area 2"]),
+        Id: elem['Id'],
+        'Text Area 1': elem['Text Area 1'],
+        'Text Area 2': extractFields(elem['Text Area 2']),
       };
-      result.set(tmp["Id"], { ...tmp, relations: [] });
+      result.set(tmp['Id'], { ...tmp, relations: [] });
     }
   }
   return result;
@@ -38,13 +38,13 @@ function parseClassesFromCsvFileData(csvData) {
 function parseRelationsFromCsvFileData(csvData) {
   var result = [];
   for (let elem of csvData) {
-    if (elem["Name"] == "Line") {
+    if (elem['Name'] == 'Line') {
       var tmp = {
-        Id: elem["Id"],
-        "Line Source": elem["Line Source"],
-        "Line Destination": elem["Line Destination"],
-        "Text Area 1": elem["Text Area 1"],
-        "Text Area 2": elem["Text Area 2"],
+        Id: elem['Id'],
+        'Line Source': elem['Line Source'],
+        'Line Destination': elem['Line Destination'],
+        'Text Area 1': elem['Text Area 1'],
+        'Text Area 2': elem['Text Area 2'],
       };
       result.push(tmp);
     }
@@ -53,14 +53,19 @@ function parseRelationsFromCsvFileData(csvData) {
 }
 
 function extractFields(textArea) {
-  var result = "";
+  var result = '';
   result = textArea
-    .replace("- ", " ")
-    .replace("+ ", " ")
-    .replace(/\n/g, " ")
+    .replace('- ', ' ')
+    .replace('+ ', ' ')
+    .replace(/\n/g, ' ')
     .trim()
-    .replace(/\+/g, " - ")
-    .split(" - ");
+    .replace(/\+/g, ' ')
+    .replace(/\-/g, ' ')
+    .replace(/\s/g, ',')
+    .split(',')
+    .filter(function (elem) {
+      return elem != '';
+    });
   return result;
 }
 
