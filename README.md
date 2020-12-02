@@ -1,12 +1,12 @@
 # Lucidchart Mongoose Models Generator
 
-Convert a class diagram in UML to Mongoose Models
-Generate Mongoose Models from UML Class Diagram exported to Csv file by [Lucidchart](https://lucid.co/product/lucidchart)
+Convert an UML class diagram to Mongoose Models. </br>
+Generate Mongoose Models from UML Class Diagram exported to Csv file by [Lucidchart](https://lucid.co/product/lucidchart). </br>
 
 ## Features
 
-Generate Mongoose Models
-Generate Mongoose Models Relations ( right now, we support just OneToMany relation)
+Generate Mongoose Models. </br>
+Generate Mongoose Models Relations ( right now, we support just OneToMany relation). </br>
 
 ## Installation
 
@@ -16,7 +16,7 @@ npm i -g lucidchart-mongoose-models-generator
 
 ## Usage Example
 
-Create an UML Class Diagram at [Lucidchart](https://lucid.co/product/lucidchart)
+Create an UML Class Diagram at [Lucidchart](https://lucid.co/product/lucidchart). </br>
 ![usage example](https://github.com/taheroo/lucidchart-mongoose-models-generator/blob/master/images/lucidchart_uml_class_diagram.png)
 Export Class Diagram to CSV file. </br>
 

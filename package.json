@@ -1,6 +1,6 @@
 {
   "name": "lucidchart-mongoose-models-generator",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Generate Mongoose Models from UML Class Diagram exported to Csv file by LucidChart",
   "main": "index.js",
   "scripts": {
@@ -15,11 +15,11 @@
     "lucidchart"
   ],
   "author": "Ayadi Tahar",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": "taheroo/lucidchart-mongoose-models-generator",
   "dependencies": {
     "csv-parser": "^2.3.3",
     "pluralize": "^8.0.0",
-    "shelljs": "^0.8.4",
     "yargs": "^16.1.1"
   },
   "devDependencies": {
