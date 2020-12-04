@@ -20,6 +20,16 @@ async function convertCsvToJson(filePath) {
   });
 }
 
+function parseClassesAndRelationsFromCsvFileData(csvData) {
+  var result = {
+    classesMap: new Map(),
+    relations: [],
+  };
+  result.classesMap = parseClassesFromCsvFileData(csvData);
+  result.relations = parseRelationsFromCsvFileData(csvData);
+  return result;
+}
+
 function parseClassesFromCsvFileData(csvData) {
   var result = new Map();
   for (let elem of csvData) {
@@ -71,6 +81,5 @@ function extractFields(textArea) {
 
 module.exports = {
   convertCsvToJson,
-  parseClassesFromCsvFileData,
-  parseRelationsFromCsvFileData,
+  parseClassesAndRelationsFromCsvFileData,
 };

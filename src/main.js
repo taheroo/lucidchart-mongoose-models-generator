@@ -1,7 +1,6 @@
 var {
   convertCsvToJson,
-  parseClassesFromCsvFileData,
-  parseRelationsFromCsvFileData,
+  parseClassesAndRelationsFromCsvFileData,
 } = require('./DataExtractorFromCsv');
 var {
   formatFields,
@@ -23,8 +22,9 @@ async function UMLClassDiagramToMongooseModels(csvFilePath) {
       reject(error);
     }
 
-    var classesMap = parseClassesFromCsvFileData(csvData);
-    var relations = parseRelationsFromCsvFileData(csvData);
+    var { classesMap, relations } = parseClassesAndRelationsFromCsvFileData(
+      csvData
+    );
 
     for (let relation of relations) {
       handleOneToManyRelation(relation, classesMap);
@@ -37,7 +37,11 @@ async function UMLClassDiagramToMongooseModels(csvFilePath) {
         value['relations'].join('')
       );
       var dirName = 'models';
-      makeModelsDirectory(dirName);
+      try {
+        makeModelsDirectory(dirName);
+      } catch (error) {
+        reject(error);
+      }
       var data = generateModel(value['Text Area 1'], schema);
       await generateModelFile(data, value['Text Area 1'], dirName);
     }

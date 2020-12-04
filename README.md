@@ -24,7 +24,9 @@ Export Class Diagram to CSV file. </br>
 npx lucidchart-mongoose-models-generator --csvFilePath="FILE_PATH"
 ```
 
-Change File_PATH with your class diagram file path (make sure there is no space in the file name)
+Change File_PATH with your class diagram file path (make sure there is no space in the file name). </br>
+Result: </br>
+![result](https://github.com/taheroo/lucidchart-mongoose-models-generator/blob/master/images/result.png)
 
 ### Want to help
 

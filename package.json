@@ -1,6 +1,6 @@
 {
   "name": "lucidchart-mongoose-models-generator",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Generate Mongoose Models from UML Class Diagram exported to Csv file by LucidChart",
   "main": "index.js",
   "scripts": {
